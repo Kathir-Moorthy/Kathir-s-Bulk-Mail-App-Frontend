@@ -168,7 +168,7 @@ function App() {
     setStatus(true);
 
     axios
-      .post("http://localhost:5000/sendemail", formData, {
+      .post("https://kathir-s-bulk-mail-backend.onrender.com/sendemail", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
