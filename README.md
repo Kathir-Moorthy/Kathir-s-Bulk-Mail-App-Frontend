@@ -74,4 +74,4 @@ This project uses **Tailwind CSS** for styling. Customize your styles in the `ta
 
 ---
 ## 🌐 Check the Live App  
-[Click here to view the app on Vercel!](https://kathir-s-bulk-mail-app-frontend.onrender.com/)
+[Click here to view the app on Render!](https://kathir-s-bulk-mail-app-frontend.onrender.com/)
