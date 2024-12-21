@@ -72,6 +72,3 @@ This project uses **Tailwind CSS** for styling. Customize your styles in the `ta
 - **Test:** `npm test` - Runs tests (if applicable).
 - **Lint:** `npm run lint` - Lints the codebase.
 
----
-## 🌐 Check the Live App  
-[Click here to view the app on Render!](https://kathir-s-bulk-mail-app-frontend.onrender.com/)
