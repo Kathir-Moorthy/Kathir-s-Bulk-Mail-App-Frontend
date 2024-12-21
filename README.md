@@ -73,3 +73,5 @@ This project uses **Tailwind CSS** for styling. Customize your styles in the `ta
 - **Lint:** `npm run lint` - Lints the codebase.
 
 ---
+## 🌐 Check the Live App  
+[Click here to view the app on Vercel!](https://kathir-s-bulk-mail-app-frontend.onrender.com/)
