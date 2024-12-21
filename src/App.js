@@ -41,53 +41,55 @@ function App() {
 
   function handleFile(event) {
     const file = event.target.files[0];
-
+  
     if (!file) {
       console.error("No file selected.");
       return;
     }
-
+  
     const reader = new FileReader();
-
+  
     reader.onload = function (e) {
       const arrayBuffer = e.target.result;
-
+  
       try {
         const workbook = XLSX.read(arrayBuffer, { type: "array" });
-        const allEmails = [];
-
+        const allEmails = new Set(); // Use Set to ensure unique emails
+  
         workbook.SheetNames.forEach((sheetName) => {
           const sheetData = XLSX.utils.sheet_to_json(
             workbook.Sheets[sheetName],
             { header: 1 }
           );
-
+  
           sheetData.forEach((row) => {
             row.forEach((cell) => {
               if (
                 typeof cell === "string" &&
                 /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cell)
               ) {
-                allEmails.push(cell);
+                allEmails.add(cell); // Add email to the Set
               }
             });
           });
         });
-
-        setEmailList(allEmails);
-        setTotalEmails(allEmails.length);
+  
+        // Convert Set back to an array
+        const uniqueEmails = Array.from(allEmails);
+  
+        setEmailList(uniqueEmails);
+        setTotalEmails(uniqueEmails.length);
       } catch (error) {
         console.error("Error parsing file:", error);
       }
     };
-
+  
     reader.onerror = function (e) {
       console.error("File reading error:", e.target.error);
     };
-
+  
     reader.readAsArrayBuffer(file);
-  }
-
+  }  
   function resetForm() {
     setMsg("");
     setSubject("");
@@ -166,7 +168,7 @@ function App() {
     setStatus(true);
 
     axios
-      .post("https://kathir-s-bulk-mail-backend.onrender.com/sendemail", formData, {
+      .post("http://localhost:5000/sendemail", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
